@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./styles/output.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="shortcut icon" href="./assets/icons/silverware.ico" type="image/x-icon">
+
+    <title>E-Restaurant</title>
+</head>
+<body>
+    <!--header-->
+
+    <header class="w-full h-[420px] border-zinc-900 bg-home bg-cover bg-center">
+
+        <div class="w-full h-full flex flex-col justify-center items-center">
+            <img 
+                src="./assets/silverware.png" 
+                alt="logo do restaurante"
+                class="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200"
+            />
+            <h1 
+                class="text-4xl mt-4 text-white font-bold">E-Resstaurant
+            </h1>
+
+            <span class="text-white font-medium mt-5">Rua: Claudio Raio 10, São Tomé das Letras, MG</span>
+
+            <div class="bg-green-600 px-4 py-1 rounded-lg mt-5" id="date-span">
+                <span class="text-white font-medium">
+                    Terça á Domingo - 16:00 as 00:00
+                </span>
+            </div>
+
+        </div>
+
+    </header>
+
+    <!--fim do header-->
+
+    <h2 class="text-2xl md:text-3xl font-bold text-white text-center mt-6">
+        Conheça nosso cardápio!
+    </h2>
+
+    <!--inicio do cardápio-->
+
+    <div id="menu"></div>
+
+    <main class="grid  grid-cols-1 md:grid-cols-2 md:gap-10 gap-7 mx-auto max-w-7xl px-2 mb-16 mt-5">
+
+        <!--produto item -->
+        <div class="flex gap-2">
+            <img src="./assets/hamburger.jpg"
+             alt="hamburger"
+             class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+            />
+            
+            <div>
+                <p class="font-bold  text-white">Hamburger Artesanal</p>
+                <p class="text-sm  text-white mt-3">
+                    O verdadeiro hambúrguer artesanal é feito com ingredientes selecionados e processos simples.
+                </p>
+    
+                <div class="flex items-center gap-2 justify-between text-white mt-3">
+                    <p class="font-bold text-lg">R$17,90</p>
+                    <button 
+                        class="bg-red-500 px-5 rounded add-to-cart-btn"
+                        data-name="Hamburger Artesanal"
+                        data-price="17.90"
+                        >
+                        <i class="fa fa-cart-plus text-lg "></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex gap-2">
+            <img src="./assets/hotdog.jpg"
+             alt="hot dog"
+             class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+            />
+            
+            <div>
+                <p class="font-bold  text-white">Hot Dog</p>
+                <p class="text-sm  text-white mt-3">
+                    O verdadeiro hambúrguer artesanal é feito com ingredientes selecionados e processos simples.
+                </p>
+    
+                <div class="flex items-center gap-2 justify-between text-white mt-3">
+                    <p class="font-bold text-lg">R$14,90</p>
+                    <button 
+                        class="bg-red-500 px-5 rounded add-to-cart-btn"
+                        data-name="hot dog"
+                        data-price="14.90"
+                        >
+                        <i class="fa fa-cart-plus text-lg "></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex gap-2">
+            <img src="./assets/pizza.jpg"
+             alt="Pizza Sabores"
+             class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+            />
+            
+            <div>
+                <p class="font-bold  text-white">Pizza Sabores</p>
+                <p class="text-sm  text-white mt-3">
+                    O verdadeiro hambúrguer artesanal é feito com ingredientes selecionados e processos simples.
+                </p>
+    
+                <div class="flex items-center gap-2 justify-between text-white mt-3">
+                    <p class="font-bold text-lg">R$24,90</p>
+                    <button 
+                        class="bg-red-500 px-5 rounded add-to-cart-btn"
+                        data-name="Hamburger Artesanal"
+                        data-price="17.90"
+                        >
+                        <i class="fa fa-cart-plus text-lg "></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex gap-2">
+            <img src="./assets/pizza-doce.jpg"
+             alt="pizza doce"
+             class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+            />
+            
+            <div>
+                <p class="font-bold  text-white">Pizza Docê</p>
+                <p class="text-sm  text-white mt-3">
+                    O verdadeiro hambúrguer artesanal é feito com ingredientes selecionados e processos simples.
+                </p>
+    
+                <div class="flex items-center gap-2 justify-between text-white mt-3">
+                    <p class="font-bold text-lg">R$28,90</p>
+                    <button 
+                        class="bg-red-500 px-5 rounded add-to-cart-btn"
+                        data-name="Pizza Docê"
+                        data-price="28.90"
+                        >
+                        <i class="fa fa-cart-plus text-lg "></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- fim do produto item -->
+    </main>
+    
+
+    <!--Bebidas-->
+
+    <div class="mx-auto max-w-7xl px-2 my-2  text-white">
+        <h2 class="font-bold text-3xl">
+            Bebidas
+        </h2>
+    </div>
+
+    <div class="grid  grid-cols-1 md:grid-cols-2 md:gap-10 gap-7 mx-auto max-w-7xl px-2 mb-16 mt-5" id="menu">
+
+        <div class="flex gap-2 w-full">
+            <img src="./assets/bebidas.jpg"
+             alt="refigerantes lata"
+             class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+            />
+            
+            <div class="w-full">
+                <p class="font-bold  text-white">Refrigerantes de Lata</p>
+                <p class="text-sm  text-white mt-3">
+                    Refrigerantes de Lata 350 ml gelado ou sem gelo.
+                </p>
+    
+                <div class="flex items-center gap-2 justify-between text-white mt-3">
+                    <p class="font-bold text-lg">R$5,90</p>
+                    <button 
+                        class="bg-red-500 px-5 rounded add-to-cart-btn"
+                        data-name="refrigerantes de Lata"
+                        data-price="5.90"
+                        >
+                        <i class="fa fa-cart-plus text-lg "></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex gap-2 w-full ">
+            <img src="./assets/agua-mineral.jpg"
+             alt="agua mineral"
+             class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+            />
+            
+            <div class="w-full">
+                <p class="font-bold  text-white">Água Mineral</p>
+                <p class="text-sm  text-white mt-3">
+                    Água mineral de 500 ml gelado ou sem gelo.
+                </p>
+    
+                <div class="flex items-center gap-2 justify-between text-white mt-3">
+                    <p class="font-bold text-lg">R$4,90</p>
+                    <button 
+                        class="bg-red-500 px-5 rounded add-to-cart-btn"
+                        data-name="Água Mineral"
+                        data-price="4.90"
+                        >
+                        <i class="fa fa-cart-plus text-lg "></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--fim do cardápio-->
+
+    <!--modal cart-->
+
+    <div class="bg-black/50 w-full h-full fixed top-0 left-0 z-[99]  items-center justify-center hidden">
+        <div class="bg-gray-700 p-5 rounded-md min-w-[90%] md:min-w-[600px] ">
+            <h2 class="text-orange-600 text-center font-bold text-2xl md-2">Meu carrinho</h2>
+
+            <div id="cart-items" class="flex justify-between md-2 flex-col">
+
+                <p class="font-bold text-white ">Total: <span id="cart-total">0.00</span></p>
+
+                <p class="text-white font-bold mt-2">Endereço de entrega</p>
+                <input 
+                    type="text"
+                    placeholder="Informe seu enredeço..."
+                    id="address"
+                    class="w-full border-2 p-1 rounded mu-1"
+                />
+                <p class="text-red-700 hidden" id="address-warn">Digite seu endereço completo!</p>
+
+                <div class="flex items-center justify-between mt-5 w-ful">
+                    <button id="close-modal-btn" class=" text-white">fechar</button>
+                    <button id="checkout-btn" class="bg-green-600 text-white px-4 py-1 rounded mt-2">Finalizar pedido</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--fim modal cart-->
+
+    <!--Footer e carrinho-->
+
+    <footer class="w-full bg-red-500 py-3 fixed bottom-0 z-40 flex items-center justify-center">
+        <button 
+            class="flex items-center gap-2  text-white font-bold"
+            id="cart-btn"
+            >
+                (<span id="cart-count">0</span>)
+                    Veja seu carrinho
+                <i class="fa fa-cart-plus text-lg text-white"></i>
+        </button>
+    </footer>
+
+</body>
+</html>
