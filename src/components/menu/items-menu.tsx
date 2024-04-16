@@ -13,7 +13,7 @@ export function ItemsMenu({ title, items }: IItemsMenu) {
       <div className="grid  grid-cols-1 md:grid-cols-2 md:gap-10 gap-7 mx-auto max-w-7xl px-2 mb-16 mt-5">
         {items?.map(value => <CardMenu
           item={value}
-          alternative_text="Foto de pizza gourme"
+          alternative_text={`Foto de ${value.name}`}
         />)}
         
       </div>

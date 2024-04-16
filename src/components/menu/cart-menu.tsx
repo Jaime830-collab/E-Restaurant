@@ -3,11 +3,13 @@
 import { useState } from "react";
 import { FaCartFlatbed, FaLocationPin } from "react-icons/fa6";
 
-export function CartMenu() {
-    const [statusMenuCart, setStatusMenuCart] = useState(true)
-    function toogleMenu (status: boolean) {
-        setStatusMenuCart(status)
-    }
+interface ICartMenuProps {
+  onToogleMenu: Function;
+  statusMenuCart: boolean;
+}
+
+export function CartMenu({onToogleMenu, statusMenuCart }: ICartMenuProps) {
+
   return (
     <>
     {statusMenuCart &&
@@ -36,7 +38,7 @@ export function CartMenu() {
             </p>
 
             <div className="flex items-center justify-between mt-5 w-ful">
-              <button onClick={() => toogleMenu(false)} id="close-modal-btn" className=" bg-red-600 text-white px-4 py-1 rounded mt-2 ">
+              <button onClick={() => onToogleMenu(false)} id="close-modal-btn" className=" bg-red-600 text-white px-4 py-1 rounded mt-2 ">
                 fechar
               </button>
               <button
