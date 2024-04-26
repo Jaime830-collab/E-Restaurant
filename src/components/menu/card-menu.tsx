@@ -1,15 +1,20 @@
+"use client"
+
 import Image from "next/image";
 import { FaPlus } from "react-icons/fa";
 import { Item } from "../types";
+import { useCart } from "../hooks/cart-hook";
 
 
 interface IMenuPageProps {
 
     item: Item;
     alternative_text: string;
-    
+
 }
 export function CardMenu({ item, alternative_text }: IMenuPageProps){
+    const { addFoodCart } = useCart()
+    
     const price_format = (price: number) => {
         return String(Number(price).toFixed(2)).replace(".", ",")
     }
@@ -33,6 +38,7 @@ export function CardMenu({ item, alternative_text }: IMenuPageProps){
                     <p className="font-bold text-lg">R$ {price_format(item?.price)}</p>
                     <button 
                         className="bg-red-500 px-5 rounded add-to-cart-btn"
+                        onClick={() => addFoodCart({ id: item?.id, name: item?.name })}
                         >
                         <FaPlus />
                     </button>

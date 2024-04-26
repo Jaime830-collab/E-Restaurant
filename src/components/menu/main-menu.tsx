@@ -1,10 +1,13 @@
+'use client'
 import { ApresentationMenu } from "./apresentation-menu";
 import { ItemsMenu } from "./items-menu";
 import { CartContainerMenu } from "./cart-container-menu";
+import { CartProvider, useCart } from "../hooks/cart-hook";
 /*
     TODO: CRIAR TIPOS DESSE COMPONENT
     */
 export function MainMenu({ itemsByCategory }: any) {
+
   return (
     <>
       <ApresentationMenu />
@@ -15,11 +18,17 @@ export function MainMenu({ itemsByCategory }: any) {
       {/*
     TODO: CRIAR TIPOS DESSE ELEMENT
     */}
-      {itemsByCategory?.map((value: any) => (
-        <ItemsMenu title={value?.category} items={value?.items} />
+
+    <CartProvider>
+     
+    {itemsByCategory?.map((value: any, index: number) => (
+        <ItemsMenu key={index} title={value?.category} items={value?.items} />
       ))}
 
       <CartContainerMenu />
+
+    </CartProvider>
+
     </>
   );
 }

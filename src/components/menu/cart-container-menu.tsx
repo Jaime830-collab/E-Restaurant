@@ -6,6 +6,7 @@ import { CartMenu } from "./cart-menu";
 
 export function CartContainerMenu(){
     const [statusMenuCart, setStatusMenuCart] = useState(false)
+
     function toogleMenu (status: boolean) {
         setStatusMenuCart(status)
     }

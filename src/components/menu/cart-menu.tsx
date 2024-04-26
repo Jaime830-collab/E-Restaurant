@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { FaCartFlatbed, FaLocationPin } from "react-icons/fa6";
+import { CartItem } from "./cart-item";
+import { useCart } from "../hooks/cart-hook";
 
 interface ICartMenuProps {
   onToogleMenu: Function;
@@ -9,7 +11,7 @@ interface ICartMenuProps {
 }
 
 export function CartMenu({onToogleMenu, statusMenuCart }: ICartMenuProps) {
-
+  const shopping = useCart()
   return (
     <>
     {statusMenuCart &&
@@ -33,6 +35,12 @@ export function CartMenu({onToogleMenu, statusMenuCart }: ICartMenuProps) {
               id="address"
               className="w-full py-2 px-2 border-2 p-1 rounded mu-1"
             />
+            <div className="overflow-y-scroll h-64 my-5 space-y-4 scroll-m-0 bg-scroll-[transparent]" style={{
+              scrollbarWidth: "none"
+            }}>
+            {shopping.cart?.map((item, index) => <CartItem key={index} item={item} />)}
+    
+            </div>
             <p className="py-2 text-red-700 hidden" id="address-warn">
               Digite seu endereço completo!
             </p>
@@ -40,6 +48,9 @@ export function CartMenu({onToogleMenu, statusMenuCart }: ICartMenuProps) {
             <div className="flex items-center justify-between mt-5 w-ful">
               <button onClick={() => onToogleMenu(false)} id="close-modal-btn" className=" bg-red-600 text-white px-4 py-1 rounded mt-2 ">
                 fechar
+              </button>
+              <button onClick={() => shopping.frushFoodCart()} id="close-modal-btn" className=" bg-yellow-600 text-white px-4 py-1 rounded mt-2 ">
+                Limpar Carrinho
               </button>
               <button
                 id="checkout-btn"
