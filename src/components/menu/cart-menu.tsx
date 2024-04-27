@@ -4,6 +4,7 @@ import { useState } from "react";
 import { FaCartFlatbed, FaLocationPin } from "react-icons/fa6";
 import { CartItem } from "./cart-item";
 import { useCart } from "../hooks/cart-hook";
+import { price_format } from "@/utils";
 
 interface ICartMenuProps {
   onToogleMenu: Function;
@@ -25,7 +26,7 @@ export function CartMenu({onToogleMenu, statusMenuCart }: ICartMenuProps) {
 
           <div id="cart-items" className="flex justify-between md-2 py-3 flex-col">
             <p className="font-extrabold text-3xl text-white py-6">
-              Total: <span id="cart-total">R$ 0,00</span>
+              Total: <span id="cart-total">R$ {price_format(shopping.totalPrice)}</span>
             </p>
 
             <p className="flex items-center space-x-5 mb-2 text-white font-bold mt-2"><span>Endereço de entrega</span> <FaLocationPin /></p>
@@ -38,7 +39,7 @@ export function CartMenu({onToogleMenu, statusMenuCart }: ICartMenuProps) {
             <div className="overflow-y-scroll h-64 my-5 space-y-4 scroll-m-0 bg-scroll-[transparent]" style={{
               scrollbarWidth: "none"
             }}>
-            {shopping.cart?.map((item, index) => <CartItem key={index} item={item} />)}
+            {shopping.cart?.map((item, index) => <CartItem key={index} item={item} addItem={shopping.addFoodCart} removeItem={shopping.deleteFoodCart}  />)}
     
             </div>
             <p className="py-2 text-red-700 hidden" id="address-warn">

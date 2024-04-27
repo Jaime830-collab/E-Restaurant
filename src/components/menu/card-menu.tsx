@@ -4,6 +4,7 @@ import Image from "next/image";
 import { FaPlus } from "react-icons/fa";
 import { Item } from "../types";
 import { useCart } from "../hooks/cart-hook";
+import { price_format } from "@/utils";
 
 
 interface IMenuPageProps {
@@ -13,11 +14,9 @@ interface IMenuPageProps {
 
 }
 export function CardMenu({ item, alternative_text }: IMenuPageProps){
-    const { addFoodCart } = useCart()
+    const { addFoodCart, deleteFoodCart} = useCart()
     
-    const price_format = (price: number) => {
-        return String(Number(price).toFixed(2)).replace(".", ",")
-    }
+
     return (
         <div className="flex gap-2">
             <Image src={item?.image}
@@ -38,7 +37,7 @@ export function CardMenu({ item, alternative_text }: IMenuPageProps){
                     <p className="font-bold text-lg">R$ {price_format(item?.price)}</p>
                     <button 
                         className="bg-red-500 px-5 rounded add-to-cart-btn"
-                        onClick={() => addFoodCart({ id: item?.id, name: item?.name })}
+                        onClick={() => addFoodCart({ id: item?.id, name: item?.name, price: item?.price })}
                         >
                         <FaPlus />
                     </button>

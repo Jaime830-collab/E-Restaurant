@@ -15,24 +15,6 @@ export default function Page(){
             "photo": "maca.jpg"
           },
           {
-            "id": 2,
-            "name": "Maçã",
-            "description": "Maçã vermelha e suculenta",
-            "price": 1.50,
-            "category": "Frutas",
-            "stock": 100,
-            "photo": "maca.jpg"
-          },
-          {
-            id: 3,
-            "name": "Maçã",
-            "description": "Maçã vermelha e suculenta",
-            "price": 1.50,
-            "category": "Frutas",
-            "stock": 100,
-            "photo": "maca.jpg"
-          },
-          {
             id: 4,
             name: "Pão de Forma Integral",
             description: "Pão integral rico em fibras",

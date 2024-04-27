@@ -20,3 +20,7 @@ export function filterItemsByCategory(categories: any, items: any){
         
     })
 }
+
+export const price_format = (price: number) => {
+    return String(Number(price).toFixed(2)).replace(".", ",")
+}

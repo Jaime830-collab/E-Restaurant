@@ -12,6 +12,7 @@ interface IItem {
   id: number;
   name: string;
   quantity: number;
+  price: number;
 }
 
 interface ICartContext {
@@ -19,7 +20,8 @@ interface ICartContext {
   addFoodCart: any;
   deleteFoodCart: any;
   frushFoodCart: any;
-  qtdTotaItems: number
+  qtdTotaItems: number;
+  totalPrice: number;
 }
 
 interface ICartProviderProps {
@@ -30,19 +32,21 @@ const cartContext = createContext<ICartContext>({
   deleteFoodCart: () => {},
   addFoodCart: () => {},
   frushFoodCart: () => {},
-  qtdTotaItems: 0
+  qtdTotaItems: 0,
+  totalPrice: 0
 });
 
 export function CartProvider({ children }: ICartProviderProps) {
   const [cart, setCart] = useState<IItem[]>([]);
   const [qtdTotaItems, setTotalItems] = useState<number>(0);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
 
 
   useEffect(() => {
     const cartString = localStorage.getItem("cart");
  
     if (cartString) {
-      const cartParsed: Array<{id: number, name: string, quantity: number }> = JSON.parse(cartString)
+      const cartParsed: Array<IItem> = JSON.parse(cartString)
       setCart(cartParsed);
 
       setTotalItems(cartParsed.reduce((total, current) => current.quantity + total, 0))
@@ -52,6 +56,10 @@ export function CartProvider({ children }: ICartProviderProps) {
     }
     
   }, []);
+
+  useEffect(() => {
+    setTotalPrice(cart.reduce((total, current) => (current.price * current.quantity) + total, 0))
+  }, [qtdTotaItems])
   function addFoodCart(item?: IItem) {
     if (item) {
       const cartFinded = cart.filter(
@@ -62,6 +70,8 @@ export function CartProvider({ children }: ICartProviderProps) {
       );
       if (cartFinded.length === 0) {
         setCart([...cart, { ...item, quantity: 1 }]);
+        
+        setTotalItems(qtdTotaItems + 1)
         localStorage.setItem("cart", JSON.stringify(cart));
         return;
       }
@@ -73,8 +83,8 @@ export function CartProvider({ children }: ICartProviderProps) {
 
       // muda estado
       setCart(cartUpdate);
-
       setTotalItems(qtdTotaItems + 1)
+      
 
       // Persite no localstorage
       localStorage.setItem("cart", JSON.stringify(cart));
@@ -85,15 +95,20 @@ export function CartProvider({ children }: ICartProviderProps) {
     const indexItem = cart.findIndex((itemArray) => itemArray.name === name);
     // copia para variavel mutavel
     let cartUpdate = cart;
+    if (cartUpdate[indexItem].quantity === 1){
+      const filterDeleteItem = cart.filter((item) => item.name !== name)
 
+      setCart(filterDeleteItem);
+      
+      localStorage.setItem("cart", JSON.stringify(filterDeleteItem));
+      setTotalItems(qtdTotaItems - 1)
+      return;
+    }
     if (cartUpdate[indexItem].quantity > 1) {
       // altera valor da variavel
       cartUpdate[indexItem].quantity -= 1;
 
       // muda estado
-      setCart(cartUpdate);
-    } else {
-      setCart(cart.filter((item) => item.name !== name));
     }
     setTotalItems(qtdTotaItems - 1)
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -112,6 +127,7 @@ export function CartProvider({ children }: ICartProviderProps) {
         deleteFoodCart,
         frushFoodCart,
         qtdTotaItems,
+        totalPrice
       }}
     >
       {children}
